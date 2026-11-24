@@ -290,7 +290,7 @@
 
   /* ---------------- reveal on scroll ---------------- */
   if (!reduce && "IntersectionObserver" in window) {
-    const els = document.querySelectorAll(".section-head, .role, .card, .beyond-card, .now-card, .contact h2");
+    const els = document.querySelectorAll(".section-head, .role, .card, .beyond-card, .now-card, .interest, .painting, .contact h2");
     els.forEach((el) => el.classList.add("reveal"));
     const io = new IntersectionObserver((entries) => {
       entries.forEach((en) => { if (en.isIntersecting) {
