@@ -1,6 +1,6 @@
 # portfolio
 
-Ahmed Mriziq's personal site, live at **https://amriz26.github.io/portfolio/**. A static page (HTML, CSS, vanilla JS) with one idea: the page **detects** what your cursor is on, like a computer-vision model drawing a box around an object. It's a nod to [AirMouse](https://github.com/amriz26/AirMouse).
+Ahmed Mriziq's personal site, live at **https://amriz26.github.io/ahmedm-portfolio/**. A static page (HTML, CSS, vanilla JS) with one idea: the page **detects** what your cursor is on, like a computer-vision model drawing a box around an object. It's a nod to [AirMouse](https://github.com/amriz26/AirMouse).
 
 The hero name is drawn as a cloud of landmark points sampled from the letters and joined like a hand-tracking skeleton. Push them with your cursor or finger, and they spring back into place.
 
