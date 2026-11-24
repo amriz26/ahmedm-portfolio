@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ahmed Mriziq · Software Engineer</title>
+  <meta name="description" content="Ahmed Mriziq builds AI agents and computer-vision apps that turn odd ideas into working software." />
+  <meta name="theme-color" content="#141113" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- detection overlay: follows the pointer and snaps to whatever it's on -->
+  <div class="detector" aria-hidden="true">
+    <span class="c tl"></span><span class="c tr"></span><span class="c bl"></span><span class="c br"></span>
+    <span class="detector-label"><b class="d-class">cursor</b> <i class="d-conf">0.99</i></span>
+  </div>
+
+  <header class="nav">
+    <a href="#top" class="brand" data-detect="logo">am<span>·</span></a>
+    <nav>
+      <a href="#work" data-detect="link">experience</a>
+      <a href="#projects" data-detect="link">projects</a>
+      <a href="#contact" data-detect="link">contact</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-band" aria-hidden="true"></div>
+      <div class="hero-inner">
+        <p class="eyebrow mono" data-detect="status">● online · San Francisco</p>
+        <h1 data-detect="human">Ahmed<br/>Mriziq</h1>
+        <p class="lede" data-detect="tagline">
+          I build software that <em>looks at the world</em> and does something about it:
+          AI agents, computer vision, and odd ideas turned into working apps.
+        </p>
+        <div class="hero-cta">
+          <a class="btn primary" href="#projects" data-detect="button">See the projects</a>
+          <a class="btn" href="https://github.com/amriz26" target="_blank" rel="noopener" data-detect="github">GitHub ↗</a>
+          <a class="btn" href="https://www.linkedin.com/in/ahmed-m-156260237" target="_blank" rel="noopener" data-detect="linkedin">LinkedIn ↗</a>
+        </div>
+
+        <aside class="hud mono" aria-label="Detection panel">
+          <div class="hud-row"><span>model</span><span>portfolio-v2</span></div>
+          <div class="hud-row"><span>tracking</span><span class="hud-target">—</span></div>
+          <div class="hud-row"><span>objects seen</span><span class="hud-count">0</span><span class="hud-of">/ <span class="hud-total">0</span></span></div>
+          <div class="hud-bar"><span></span></div>
+          <p class="hud-hint">Move your cursor around. This page tracks it the way <a href="https://github.com/amriz26/AirMouse" target="_blank" rel="noopener">AirMouse</a> tracks a hand.</p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- NOW -->
+    <section class="now" aria-label="Currently">
+      <div class="now-card" data-detect="current role">
+        <span class="mono tag">now</span>
+        <p><strong>Forward Deployed Engineer @ Casper Studios</strong> <span class="muted">(Acquired by ODE with Anthropic)</span></p>
+      </div>
+      <div class="now-card" data-detect="education">
+        <span class="mono tag">edu</span>
+        <p><strong>B.S. Computer Science</strong> <span class="muted">San Francisco State · 2026</span></p>
+      </div>
+      <div class="now-card" data-detect="focus">
+        <span class="mono tag">focus</span>
+        <p><strong>Claude agents, MCP, computer vision</strong></p>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="work" class="section">
+      <div class="section-head">
+        <p class="mono eyebrow">01 / experience</p>
+        <h2>Where I've been building</h2>
+        <p class="muted">Tap a role to see what I focused on and what came of it.</p>
+      </div>
+
+      <ol class="timeline">
+        <li class="role open" data-detect="role">
+          <button class="role-head" aria-expanded="true">
+            <span class="role-when mono">2026 — now</span>
+            <span class="role-title">Casper Studios <span class="muted">(Acquired by ODE with Anthropic)</span></span>
+            <span class="role-pos">Forward Deployed Engineer</span>
+            <span class="role-toggle" aria-hidden="true">+</span>
+          </button>
+          <div class="role-body"><div class="role-inner">
+            <dl>
+              <dt>Focus</dt>
+              <dd>Embedded with a private-equity talent-advisory firm as their lead engineer, building the AI operating system the whole team now works in.</dd>
+              <dt>Building</dt>
+              <dd>A Claude plugin of agent skills that turns interview transcripts and diligence files into client-ready decks and spreadsheets. Behind it: a cloud pipeline that files and de-identifies meeting notes, MCP servers for Drive and a team wiki, and eval harnesses to compare skill versions.</dd>
+              <dt>Impact</dt>
+              <dd>
+                <span class="stat"><b data-count="10">10</b>+ skills shipped org-wide</span>
+                <span class="stat"><b data-count="3500">3,500</b>+ files migrated</span>
+                <span class="stat"><b data-count="800">800</b>+ docs tracked</span>
+              </dd>
+            </dl>
+            <ul class="chips"><li>Claude Agent SDK</li><li>MCP</li><li>GCP Cloud Run</li><li>GitHub Actions</li><li>Next.js</li><li>Postgres</li></ul>
+          </div></div>
+        </li>
+
+        <li class="role" data-detect="role">
+          <button class="role-head" aria-expanded="false">
+            <span class="role-when mono">2025</span>
+            <span class="role-title">Keplr AI</span>
+            <span class="role-pos">Software Engineer Intern</span>
+            <span class="role-toggle" aria-hidden="true">+</span>
+          </button>
+          <div class="role-body"><div class="role-inner">
+            <dl>
+              <dt>Focus</dt>
+              <dd>Joined as the second engineer at an early-stage startup.</dd>
+              <dt>Building</dt>
+              <dd>AI agents that help enterprise supply-chain teams spot risky suppliers and plan smarter sourcing.</dd>
+              <dt>Impact</dt>
+              <dd>As one of the first two engineers, I built core pieces of the product from the start.</dd>
+            </dl>
+            <ul class="chips"><li>AI agents</li><li>Python</li><li>TypeScript</li></ul>
+          </div></div>
+        </li>
+
+        <li class="role" data-detect="role">
+          <button class="role-head" aria-expanded="false">
+            <span class="role-when mono">2024 — 2025</span>
+            <span class="role-title">Scale AI</span>
+            <span class="role-pos">ML Research Engineer</span>
+            <span class="role-toggle" aria-hidden="true">+</span>
+          </button>
+          <div class="role-body"><div class="role-inner">
+            <dl>
+              <dt>Focus</dt>
+              <dd>Making models more trustworthy, both language models and vision models.</dd>
+              <dt>Building</dt>
+              <dd>Evaluations and test cases for AI-written code, anomaly-detection and deep-learning work for vision foundation models, and LiDAR segmentation on self-driving car data.</dd>
+              <dt>Impact</dt>
+              <dd>
+                <span class="stat">~<b data-count="20">20</b>% better model performance</span>
+                <span class="stat"><b data-count="25">25</b>% higher predictive accuracy</span>
+              </dd>
+            </dl>
+            <ul class="chips"><li>PyTorch</li><li>LLM evals</li><li>LiDAR</li><li>CV</li></ul>
+          </div></div>
+        </li>
+
+        <li class="role" data-detect="role">
+          <button class="role-head" aria-expanded="false">
+            <span class="role-when mono">2024</span>
+            <span class="role-title">HeadStarter AI</span>
+            <span class="role-pos">Software Engineer Fellow</span>
+            <span class="role-toggle" aria-hidden="true">+</span>
+          </button>
+          <div class="role-body"><div class="role-inner">
+            <dl>
+              <dt>Focus</dt>
+              <dd>Shipping fast in a small team, and leading other fellows.</dd>
+              <dt>Building</dt>
+              <dd>A run of AI apps and APIs on Next.js with OpenAI, Pinecone and Stripe.</dd>
+              <dt>Impact</dt>
+              <dd>
+                <span class="stat"><b data-count="5">5</b>+ apps shipped</span>
+                <span class="stat"><b data-count="500">500</b>+ users</span>
+                <span class="stat"><b data-count="80">80</b>% of backlog cleared</span>
+              </dd>
+            </dl>
+            <ul class="chips"><li>Next.js</li><li>OpenAI</li><li>Pinecone</li><li>Stripe</li></ul>
+          </div></div>
+        </li>
+
+        <li class="role" data-detect="role">
+          <button class="role-head" aria-expanded="false">
+            <span class="role-when mono">2024</span>
+            <span class="role-title">CTI CodeDay Labs</span>
+            <span class="role-pos">Software Engineer Intern</span>
+            <span class="role-toggle" aria-hidden="true">+</span>
+          </button>
+          <div class="role-body"><div class="role-inner">
+            <dl>
+              <dt>Focus</dt>
+              <dd>Contributing to a real open-source codebase.</dd>
+              <dt>Building</dt>
+              <dd>Test coverage and admin graphing for the Open Energy Dashboard, which tracks building energy use.</dd>
+              <dt>Impact</dt>
+              <dd>
+                <span class="stat">Merged PR, <b data-count="15">15</b>% more accurate CO₂ conversions</span>
+                <span class="stat"><b data-count="10000">10,000</b>+ active users</span>
+              </dd>
+            </dl>
+            <ul class="chips"><li>Node.js</li><li>Mocha</li><li>Chai</li></ul>
+          </div></div>
+        </li>
+      </ol>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section">
+      <div class="section-head">
+        <p class="mono eyebrow">02 / projects</p>
+        <h2>Input → output</h2>
+        <p class="muted">Each project takes in a signal and turns it into an action. Filter by what goes in.</p>
+      </div>
+
+      <div class="filters" role="toolbar" aria-label="Filter projects by input">
+        <button class="filter active" data-filter="all" aria-pressed="true">all</button>
+        <button class="filter" data-filter="camera" aria-pressed="false">camera</button>
+        <button class="filter" data-filter="behavior" aria-pressed="false">behavior</button>
+        <button class="filter" data-filter="data" aria-pressed="false">data</button>
+        <button class="filter" data-filter="web" aria-pressed="false">web</button>
+      </div>
+
+      <div class="grid">
+        <article class="card feature" data-kind="camera" data-detect="project">
+          <div class="card-viz viz-hand" aria-hidden="true">
+            <svg viewBox="0 0 200 120"><g class="joints"></g></svg>
+          </div>
+          <p class="io mono"><span>webcam</span><span class="arrow">→</span><span>cursor</span></p>
+          <h3>AirMouse</h3>
+          <p>Control your computer with your hand. Real-time hand tracking turns fingertips into a cursor, with pinch-to-click, gesture modes for scrolling and drawing, and per-user calibration.</p>
+          <ul class="chips"><li>Python</li><li>OpenCV</li><li>MediaPipe</li></ul>
+          <a class="card-link" href="https://github.com/amriz26/AirMouse" target="_blank" rel="noopener">View repo ↗</a>
+        </article>
+
+        <article class="card" data-kind="camera" data-detect="project">
+          <p class="io mono"><span>fridge photo</span><span class="arrow">→</span><span>dinner</span></p>
+          <h3>PantryVision</h3>
+          <p>Point your camera inside the fridge. It detects the ingredients and suggests meals you can actually make.</p>
+          <ul class="chips"><li>TypeScript</li><li>YOLO</li></ul>
+          <a class="card-link" href="https://github.com/amriz26/PantryVision" target="_blank" rel="noopener">View repo ↗</a>
+        </article>
+
+        <article class="card" data-kind="camera" data-detect="project">
+          <p class="io mono"><span>room scan</span><span class="arrow">→</span><span>furniture</span></p>
+          <h3>AR Furniture Placement</h3>
+          <p>Scans a room, finds surfaces and objects, then places virtual furniture that obeys real physics.</p>
+          <ul class="chips"><li>Dart</li><li>Flutter</li><li>CV</li></ul>
+          <a class="card-link" href="https://github.com/amriz26/AR-Furniture-Placement-Phys-Sim" target="_blank" rel="noopener">View repo ↗</a>
+        </article>
+
+        <article class="card" data-kind="behavior" data-detect="project">
+          <p class="io mono"><span>tab switching</span><span class="arrow">→</span><span>nudge</span></p>
+          <h3>Procrastination Predictor</h3>
+          <p>Learns when you're about to procrastinate from browser activity, typing speed and app-switching, and warns you first.</p>
+          <ul class="chips"><li>Python</li><li>ML</li></ul>
+          <a class="card-link" href="https://github.com/amriz26/Procrastination-Pattern-Predictor-" target="_blank" rel="noopener">View repo ↗</a>
+        </article>
+
+        <article class="card" data-kind="data" data-detect="project">
+          <p class="io mono"><span>recipes</span><span class="arrow">→</span><span>variations</span></p>
+          <h3>Recipe Mutation Engine</h3>
+          <p>Learns <em>why</em> recipes work, then creates valid new variations from what's in your kitchen. More than ingredient swaps.</p>
+          <ul class="chips"><li>Python</li></ul>
+          <a class="card-link" href="https://github.com/amriz26/-Recipe-Mutation-Engine" target="_blank" rel="noopener">View repo ↗</a>
+        </article>
+
+        <article class="card" data-kind="data" data-detect="project">
+          <p class="io mono"><span>pixels</span><span class="arrow">→</span><span>character</span></p>
+          <h3>Cartoon Character CNN</h3>
+          <p>A deep-learning capstone: a convolutional network that recognizes cartoon characters from images.</p>
+          <ul class="chips"><li>PyTorch</li><li>CNN</li></ul>
+          <a class="card-link" href="https://github.com/amriz26/CNN-Based-Image-Classification-of-Cartoon-Characters" target="_blank" rel="noopener">View repo ↗</a>
+        </article>
+
+        <article class="card" data-kind="web" data-detect="project">
+          <p class="io mono"><span>live incidents</span><span class="arrow">→</span><span>safety map</span></p>
+          <h3>SafeTravels</h3>
+          <p>A full-stack safety app that pulls real-time incident data on a schedule, maps nearby dangers, and emails alerts for the areas you subscribe to.</p>
+          <ul class="chips"><li>React</li><li>MongoDB</li><li>Express</li><li>Google Maps</li></ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- BEYOND CODE -->
+    <section class="section beyond">
+      <div class="section-head">
+        <p class="mono eyebrow">03 / beyond code</p>
+        <h2>Leading people, too</h2>
+      </div>
+      <div class="beyond-grid">
+        <div class="beyond-card" data-detect="leadership">
+          <p class="mono tag">conference chair</p>
+          <h3>Manara West 2025</h3>
+          <p>Ran the West Coast's largest annual gathering for Muslim students: 50+ volunteers, 450+ attendees from 20+ universities.</p>
+        </div>
+        <div class="beyond-card" data-detect="leadership">
+          <p class="mono tag">marketing director</p>
+          <h3>ACM @ SFSU</h3>
+          <p>Grew the chapter's social presence: followers up 50%, engagement up 35%.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section contact">
+      <p class="mono eyebrow">04 / contact</p>
+      <h2>Got an odd idea?<br/><span class="grad">Let's make it work.</span></h2>
+      <div class="hero-cta">
+        <a class="btn primary" href="https://www.linkedin.com/in/ahmed-m-156260237" target="_blank" rel="noopener" data-detect="linkedin">Message me on LinkedIn ↗</a>
+        <a class="btn" href="https://github.com/amriz26" target="_blank" rel="noopener" data-detect="github">github.com/amriz26 ↗</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot mono">
+    <span>© 2026 Ahmed Mriziq</span>
+    <span>built by hand, no hand tracking required</span>
+  </footer>
+
+  <script src="main.js" defer></script>
+</body>
+</html>
