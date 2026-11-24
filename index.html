@@ -22,9 +22,9 @@
   <header class="nav">
     <a href="#top" class="brand" data-detect="logo">am<span>·</span></a>
     <nav>
-      <a href="#work" data-detect="link">experience</a>
-      <a href="#projects" data-detect="link">projects</a>
-      <a href="#contact" data-detect="link">contact</a>
+      <a href="#work" data-section="work"><span class="nav-mark"><svg class="nav-ico" viewBox="0 0 16 16" width="15" height="15" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect class="j" style="--i:0" x="1.5" y="6.5" width="9" height="7.5" rx="1.5"/><path class="j" style="--i:1" d="M4.5 4.5h7.5a1 1 0 0 1 1 1V11"/><path class="j" style="--i:2" d="M7.5 2h6.5a.5.5 0 0 1 .5.5V8"/></svg></span><span class="nav-txt">experience</span></a>
+      <a href="#projects" data-section="projects"><span class="nav-mark"><svg class="nav-ico" viewBox="0 0 16 16" width="15" height="15" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 14.2 4.8 9.4 3.6 5.2M8 14.2V8.2l.2-5M8 14.2l3.3-4.6 1.4-3.8M4.8 9.4 8 8.2l3.3 1.4"/><circle class="j" style="--i:0" cx="8" cy="14.2" r="1.1"/><circle class="j" style="--i:1" cx="3.6" cy="5.2" r="1.1"/><circle class="j" style="--i:2" cx="8.2" cy="3.2" r="1.1"/><circle class="j" style="--i:3" cx="12.7" cy="5.8" r="1.1"/></svg></span><span class="nav-txt">projects</span></a>
+      <a href="#contact" data-section="contact"><span class="nav-mark"><svg class="nav-ico nav-wave" viewBox="0 0 16 16" width="15" height="15" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><path d="M5.6 8.4V3.6M8 7.6V2.4M10.4 7.8V3.2M12.6 8.6V5.2"/><path d="M5.6 8.4v1.9c0 2.5 1.8 4.2 4 4.2s3-1.6 3-3.5V8.6"/><path d="M5.6 10.6 3.4 8.5"/></svg></span><span class="nav-txt">contact</span></a>
     </nav>
   </header>
 
@@ -34,15 +34,18 @@
       <div class="hero-band" aria-hidden="true"></div>
       <div class="hero-inner">
         <p class="eyebrow mono" data-detect="status">● online · San Francisco</p>
-        <h1 data-detect="human">Ahmed<br/>Mriziq</h1>
+        <div class="name-wrap">
+          <h1 data-detect="name" data-detect-zone>Ahmed<br/>Mriziq</h1>
+          <canvas class="name-canvas" aria-hidden="true"></canvas>
+        </div>
         <p class="lede" data-detect="tagline">
           I build software that <em>looks at the world</em> and does something about it:
           AI agents, computer vision, and odd ideas turned into working apps.
         </p>
         <div class="hero-cta">
           <a class="btn primary" href="#projects" data-detect="button">See the projects</a>
-          <a class="btn" href="https://github.com/amriz26" target="_blank" rel="noopener" data-detect="github">GitHub ↗</a>
-          <a class="btn" href="https://www.linkedin.com/in/ahmed-m-156260237" target="_blank" rel="noopener" data-detect="linkedin">LinkedIn ↗</a>
+          <a class="btn" href="https://github.com/amriz26" target="_blank" rel="noopener" data-detect="github"><span class="ico ico-github" aria-hidden="true"></span>GitHub ↗</a>
+          <a class="btn" href="https://www.linkedin.com/in/ahmed-m-156260237" target="_blank" rel="noopener" data-detect="linkedin"><span class="ico ico-linkedin" aria-hidden="true"></span>LinkedIn ↗</a>
         </div>
 
         <aside class="hud mono" aria-label="Detection panel">
@@ -59,10 +62,12 @@
     <section class="now" aria-label="Currently">
       <div class="now-card" data-detect="current role">
         <span class="mono tag">now</span>
+        <span class="logo sm"><img src="assets/logos/casper.png" alt="Casper Studios logo" width="40" height="40" loading="lazy"/></span>
         <p><strong>Forward Deployed Engineer @ Casper Studios</strong> <span class="muted">(Acquired by ODE with Anthropic)</span></p>
       </div>
       <div class="now-card" data-detect="education">
         <span class="mono tag">edu</span>
+        <span class="logo sm seal"><img src="assets/logos/sfsu.png" alt="San Francisco State University seal" width="30" height="30" loading="lazy"/></span>
         <p><strong>B.S. Computer Science</strong> <span class="muted">San Francisco State · 2026</span></p>
       </div>
       <div class="now-card" data-detect="focus">
@@ -83,19 +88,19 @@
         <li class="role open" data-detect="role">
           <button class="role-head" aria-expanded="true">
             <span class="role-when mono">2026 — now</span>
-            <span class="role-title">Casper Studios <span class="muted">(Acquired by ODE with Anthropic)</span></span>
+            <span class="role-title merger" aria-label="Casper Studios, acquired by ODE with Anthropic"><span class="acq-frame" aria-hidden="true"><i class="c tl"></i><i class="c tr"></i><i class="c bl"></i><i class="c br"></i><b class="acq-label mono">acquired <i>1.00</i></b></span><span class="org org-casper"><span class="logo"><img src="assets/logos/casper.png" alt="Casper Studios logo" width="40" height="40" loading="lazy"/></span><span>Casper Studios</span></span><span class="acq-link" aria-hidden="true"><span class="acq-by mono">acquired by</span><span class="acq-line"><span></span></span></span><span class="org org-ode"><span class="logo"><img src="assets/logos/ode.png" alt="ODE with Anthropic logo" width="40" height="40" loading="lazy"/></span><span>ODE with Anthropic</span></span></span>
             <span class="role-pos">Forward Deployed Engineer</span>
             <span class="role-toggle" aria-hidden="true">+</span>
           </button>
           <div class="role-body"><div class="role-inner">
             <dl>
               <dt>Focus</dt>
-              <dd>Embedded with a private-equity talent-advisory firm as their lead engineer, building the AI operating system the whole team now works in.</dd>
+              <dd>Embedded with client teams as their lead engineer, building the AI systems their day-to-day work now runs on.</dd>
               <dt>Building</dt>
-              <dd>A Claude plugin of agent skills that turns interview transcripts and diligence files into client-ready decks and spreadsheets. Behind it: a cloud pipeline that files and de-identifies meeting notes, MCP servers for Drive and a team wiki, and eval harnesses to compare skill versions.</dd>
+              <dd>AI agents and the production systems behind them, turning raw files and conversations into finished, client-ready work.</dd>
               <dt>Impact</dt>
               <dd>
-                <span class="stat"><b data-count="10">10</b>+ skills shipped org-wide</span>
+                <span class="stat"><b data-count="10">10</b>+ AI agents shipped org-wide</span>
                 <span class="stat"><b data-count="3500">3,500</b>+ files migrated</span>
                 <span class="stat"><b data-count="800">800</b>+ docs tracked</span>
               </dd>
@@ -107,7 +112,7 @@
         <li class="role" data-detect="role">
           <button class="role-head" aria-expanded="false">
             <span class="role-when mono">2025</span>
-            <span class="role-title">Keplr AI</span>
+            <span class="role-title"><span class="org"><span class="logo"><img src="assets/logos/keplr.png" alt="Keplr AI logo" width="40" height="40" loading="lazy"/></span><span>Keplr AI</span></span></span>
             <span class="role-pos">Software Engineer Intern</span>
             <span class="role-toggle" aria-hidden="true">+</span>
           </button>
@@ -127,7 +132,7 @@
         <li class="role" data-detect="role">
           <button class="role-head" aria-expanded="false">
             <span class="role-when mono">2024 — 2025</span>
-            <span class="role-title">Scale AI</span>
+            <span class="role-title"><span class="org"><span class="logo"><img src="assets/logos/scale.png" alt="Scale AI logo" width="40" height="40" loading="lazy"/></span><span>Scale AI</span></span></span>
             <span class="role-pos">ML Research Engineer</span>
             <span class="role-toggle" aria-hidden="true">+</span>
           </button>
@@ -150,7 +155,7 @@
         <li class="role" data-detect="role">
           <button class="role-head" aria-expanded="false">
             <span class="role-when mono">2024</span>
-            <span class="role-title">HeadStarter AI</span>
+            <span class="role-title"><span class="org"><span class="logo"><img src="assets/logos/headstarter.png" alt="HeadStarter AI logo" width="40" height="40" loading="lazy"/></span><span>HeadStarter AI</span></span></span>
             <span class="role-pos">Software Engineer Fellow</span>
             <span class="role-toggle" aria-hidden="true">+</span>
           </button>
@@ -174,7 +179,7 @@
         <li class="role" data-detect="role">
           <button class="role-head" aria-expanded="false">
             <span class="role-when mono">2024</span>
-            <span class="role-title">CTI CodeDay Labs</span>
+            <span class="role-title"><span class="org"><span class="logo tiny"><img src="assets/logos/codeday.png" alt="CodeDay Labs logo" width="40" height="40" loading="lazy"/></span><span>CTI CodeDay Labs</span></span></span>
             <span class="role-pos">Software Engineer Intern</span>
             <span class="role-toggle" aria-hidden="true">+</span>
           </button>
@@ -298,8 +303,8 @@
       <p class="mono eyebrow">04 / contact</p>
       <h2>Got an odd idea?<br/><span class="grad">Let's make it work.</span></h2>
       <div class="hero-cta">
-        <a class="btn primary" href="https://www.linkedin.com/in/ahmed-m-156260237" target="_blank" rel="noopener" data-detect="linkedin">Message me on LinkedIn ↗</a>
-        <a class="btn" href="https://github.com/amriz26" target="_blank" rel="noopener" data-detect="github">github.com/amriz26 ↗</a>
+        <a class="btn primary" href="https://www.linkedin.com/in/ahmed-m-156260237" target="_blank" rel="noopener" data-detect="linkedin"><span class="ico ico-linkedin" aria-hidden="true"></span>Message me on LinkedIn ↗</a>
+        <a class="btn" href="https://github.com/amriz26" target="_blank" rel="noopener" data-detect="github"><span class="ico ico-github" aria-hidden="true"></span>github.com/amriz26 ↗</a>
       </div>
     </section>
   </main>
@@ -309,6 +314,7 @@
     <span>built by hand, no hand tracking required</span>
   </footer>
 
+  <script src="name.js" defer></script>
   <script src="main.js" defer></script>
 </body>
 </html>

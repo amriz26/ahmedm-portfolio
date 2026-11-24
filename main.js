@@ -18,7 +18,7 @@
 
   // stable pseudo-confidence per element, so it doesn't flicker
   const conf = new WeakMap();
-  targets.forEach((el, i) => conf.set(el, (0.86 + ((i * 37) % 13) / 100).toFixed(2)));
+  targets.forEach((el, i) => conf.set(el, "detectZone" in el.dataset ? "0.99" : (0.86 + ((i * 37) % 13) / 100).toFixed(2)));
 
   const SIZE = 28, PAD = 8;
   const cur = { x: -100, y: -100, w: SIZE, h: SIZE };
@@ -26,7 +26,11 @@
   let locked = null, mouse = { x: -100, y: -100 }, raf = 0;
 
   function aimAt(el) {
-    if (el) {
+    if (el && "detectZone" in el.dataset && window.nameField?.active()) {
+      // on the particle name, frame the push zone around the cursor instead
+      const r = window.nameField.radius() * 1.2;
+      goal.x = mouse.x - r / 2; goal.y = mouse.y - r / 2; goal.w = r; goal.h = r;
+    } else if (el) {
       const r = el.getBoundingClientRect();
       goal.x = r.left - PAD; goal.y = r.top - PAD;
       goal.w = r.width + PAD * 2; goal.h = r.height + PAD * 2;
@@ -133,6 +137,77 @@
       if (locked) { const start = performance.now(); const follow = (t) => { aimAt(locked); kick(); if (t - start < 500) requestAnimationFrame(follow); }; requestAnimationFrame(follow); }
     });
   });
+
+  /* ---------------- Casper → ODE acquisition ---------------- */
+  const merger = document.querySelector(".merger");
+  if (merger) {
+    const frame = merger.querySelector(".acq-frame");
+    const casperLogo = merger.querySelector(".org-casper .logo");
+    const parts = [...merger.querySelectorAll(".org, .acq-link")];
+    const PADF = 9;
+    // measure: Casper's logo alone before the link, both companies after it
+    function placeFrame() {
+      // stack the two companies when they don't fit side by side
+      merger.classList.remove("stacked");
+      const cTop = merger.querySelector(".org-casper").offsetTop, oTop = merger.querySelector(".org-ode").offsetTop;
+      if (oTop > cTop + 4) merger.classList.add("stacked");
+      const m = merger.getBoundingClientRect();
+      const rects = merger.classList.contains("linked") ? parts.map((el) => el.getBoundingClientRect()) : [casperLogo.getBoundingClientRect()];
+      const l = Math.min(...rects.map((r) => r.left)), t = Math.min(...rects.map((r) => r.top));
+      const r = Math.max(...rects.map((x) => x.right)), b = Math.max(...rects.map((x) => x.bottom));
+      Object.assign(frame.style, {
+        left: l - m.left - PADF + "px", top: t - m.top - PADF + "px",
+        width: r - l + PADF * 2 + "px", height: b - t + PADF * 2 + "px",
+      });
+      frame.classList.add("ready");
+    }
+    const link = () => { merger.classList.add("linked"); placeFrame(); };
+    placeFrame();
+    (document.fonts ? document.fonts.ready : Promise.resolve()).then(placeFrame);
+    let rt; window.addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(placeFrame, 120); });
+
+    if (reduce || !("IntersectionObserver" in window)) link();
+    else {
+      const io = new IntersectionObserver(([en]) => {
+        if (en.isIntersecting) { setTimeout(link, 250); io.disconnect(); }
+      }, { threshold: 0.6 });
+      io.observe(merger);
+      // replay on hover (desktop) or tap (touch)
+      let busy = false;
+      const replay = () => {
+        if (busy || !merger.classList.contains("linked")) return;
+        busy = true;
+        merger.classList.remove("linked");
+        frame.style.transition = "none"; placeFrame(); void frame.offsetWidth; frame.style.transition = "";
+        requestAnimationFrame(link);
+        setTimeout(() => (busy = false), 1600);
+      };
+      merger.addEventListener("pointerenter", (e) => { if (e.pointerType === "mouse") replay(); });
+      merger.addEventListener("click", () => { if (matchMedia("(pointer: coarse)").matches) replay(); });
+    }
+  }
+
+  /* ---------------- nav: light the link for the section on screen ---------------- */
+  const navLinks = [...document.querySelectorAll(".nav nav a[data-section]")];
+  const pickCurrent = () => {
+    const line = window.innerHeight * 0.4;
+    let cur = null;
+    navLinks.forEach((a) => {
+      const sec = document.getElementById(a.dataset.section);
+      if (sec && sec.getBoundingClientRect().top <= line) cur = a;
+    });
+    // the contact section is short: count it once the page is scrolled to the bottom
+    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) cur = navLinks[navLinks.length - 1];
+    navLinks.forEach((a) => {
+      const on = a === cur;
+      a.classList.toggle("current", on);
+      if (on) a.setAttribute("aria-current", "location"); else a.removeAttribute("aria-current");
+    });
+  };
+  let navTick = false;
+  window.addEventListener("scroll", () => { if (!navTick) { navTick = true; requestAnimationFrame(() => { navTick = false; pickCurrent(); }); } }, { passive: true });
+  window.addEventListener("resize", pickCurrent);
+  pickCurrent();
 
   /* ---------------- project filters ---------------- */
   const cards = [...document.querySelectorAll(".card")];

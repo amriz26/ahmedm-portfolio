@@ -58,8 +58,30 @@ em { font-style: normal; color: var(--accent); }
 .brand { font-weight: 700; font-size: 1.25rem; text-decoration: none; letter-spacing: -.02em; }
 .brand span { color: var(--accent); }
 .nav nav { display: flex; gap: clamp(14px, 3vw, 32px); }
-.nav nav a { font-family: var(--mono); font-size: .8rem; text-decoration: none; color: var(--muted); transition: color .2s; }
-.nav nav a:hover { color: var(--text); }
+.nav nav a { display: inline-flex; align-items: center; gap: 7px; font-family: var(--mono); font-size: .8rem; text-decoration: none; color: var(--muted); transition: color .2s; }
+.nav nav a:hover, .nav nav a:focus-visible { color: var(--text); }
+.nav nav a:focus-visible { outline: 2px solid var(--ice); outline-offset: 4px; border-radius: 4px; }
+.nav nav a.current { color: var(--text); }
+
+/* nav glyphs: a tiny "detect" beat on hover/focus, lit while their section is on screen */
+.nav-mark { position: relative; display: inline-grid; place-items: center; width: 15px; height: 15px; flex: none; }
+.nav-ico { display: block; overflow: visible; transition: color .2s; }
+.nav-mark::before, .nav-mark::after {
+  content: ""; position: absolute; width: 5px; height: 5px; border: 1.3px solid var(--ice);
+  opacity: 0; transition: opacity .15s, transform .2s var(--ease);
+}
+.nav-mark::before { left: -4px; top: -4px; border-right: 0; border-bottom: 0; transform: translate(-3px, -3px); }
+.nav-mark::after { right: -4px; bottom: -4px; border-left: 0; border-top: 0; transform: translate(3px, 3px); }
+.nav nav a:hover .nav-mark::before, .nav nav a:hover .nav-mark::after,
+.nav nav a:focus-visible .nav-mark::before, .nav nav a:focus-visible .nav-mark::after { opacity: 1; transform: none; }
+.nav nav a:hover .nav-ico .j, .nav nav a:focus-visible .nav-ico .j { animation: nav-blink .5s var(--ease) calc(var(--i) * 70ms) both; }
+@keyframes nav-blink { 0% { color: currentColor; } 40% { color: var(--ice); stroke-width: 2; } 100% { color: inherit; } }
+.nav-ico .j { color: currentColor; }
+.nav nav a.current .nav-ico { color: var(--ice); }
+/* contact: the open hand waves from the wrist */
+.nav-wave { transform-origin: 62% 92%; }
+.nav nav a:hover .nav-wave, .nav nav a:focus-visible .nav-wave { animation: nav-wave .9s var(--ease) both; color: var(--ice); }
+@keyframes nav-wave { 0%,100% { transform: rotate(0); } 20% { transform: rotate(12deg); } 40% { transform: rotate(-12deg); } 60% { transform: rotate(12deg); } 80% { transform: rotate(-12deg); } }
 
 /* ---------- hero ---------- */
 .hero {
@@ -95,6 +117,12 @@ h1 {
   color: #fff;
   text-shadow: 0 2px 40px rgba(20,17,19,.25);
 }
+/* particle name: the real h1 stays for layout, screen readers and SEO */
+.name-wrap { position: relative; }
+.name-canvas { position: absolute; pointer-events: none; display: none; }
+.particles .name-canvas { display: block; }
+.particles h1 { color: transparent; text-shadow: none; }
+.particles h1::selection { color: #fff; }
 .lede { font-size: clamp(1.05rem, 2.2vw, 1.3rem); max-width: 34ch; margin: 26px 0 30px; color: #f4f1ef; }
 .hero .lede em { color: #fff; background: rgba(20,17,19,.28); padding: 0 .25em; border-radius: 4px; }
 .hero-cta { display: flex; flex-wrap: wrap; gap: 12px; }
@@ -179,7 +207,7 @@ h3 { margin: 0 0 8px; font-size: 1.2rem; letter-spacing: -.015em; }
 .role-inner .chips { padding: 0 4px 24px 150px; }
 .role-inner dt { font-family: var(--mono); font-size: .72rem; text-transform: uppercase; letter-spacing: .12em; color: var(--ice); padding-top: 4px; }
 .role-inner dd { margin: 0; max-width: 68ch; color: #d8d3d1; }
-.stat { display: inline-flex; gap: 6px; align-items: baseline; margin: 0 18px 6px 0; }
+.stat { display: inline-block; margin: 0 18px 6px 0; }
 .stat b { font-family: var(--mono); color: var(--ice); font-size: 1.05rem; }
 
 .chips { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; padding: 0; margin: 0; }
@@ -313,11 +341,113 @@ h3 { margin: 0 0 8px; font-size: 1.2rem; letter-spacing: -.015em; }
   .role-inner dl { grid-template-columns: 1fr; gap: 4px; padding: 0 0 6px; }
   .role-inner dd { margin-bottom: 10px; }
   .role-inner .chips { padding: 0 0 22px; }
-  .nav nav a:first-child { display: none; }
+  .nav nav { gap: 16px; }
+}
+
+/* very narrow phones: icons only (names stay for screen readers) */
+@media (max-width: 400px) {
+  .nav nav { gap: 6px; }
+  .nav nav a { padding: 8px; }
+  .nav-txt { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .nav-mark, .nav-ico { width: 18px; height: 18px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .nav nav a .nav-ico .j, .nav nav a .nav-wave { animation: none !important; }
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
   .reveal { opacity: 1; transform: none; }
+}
+
+/* ---------- logos ---------- */
+.logo {
+  flex: none; display: inline-grid; place-items: center;
+  width: 40px; height: 40px; border-radius: 10px; overflow: hidden;
+  background: #2a2426; border: 1px solid var(--line);
+}
+.logo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.logo.sm { width: 30px; height: 30px; border-radius: 8px; }
+.logo.xs { width: 26px; height: 26px; border-radius: 7px; }
+/* tiny official favicon: keep it at native-ish size on a light tile so it stays crisp */
+.logo.tiny { background: #f1eeec; }
+.logo.tiny img { width: 20px; height: 20px; object-fit: contain; image-rendering: pixelated; }
+/* round seal: inset slightly inside the tile */
+.logo.seal img { width: 86%; height: 86%; object-fit: contain; }
+/* placeholder monogram (no official file available) */
+.mono-logo {
+  font-family: var(--mono); font-size: .8rem; font-weight: 500; color: var(--bg);
+  background: linear-gradient(135deg, var(--ice), var(--slate) 60%, var(--cocoa));
+  border-color: transparent;
+}
+.mono-logo.sm { font-size: .68rem; }
+.now-card { align-items: center; }
+
+.org { display: inline-flex; align-items: center; gap: 12px; }
+
+/* GitHub / LinkedIn icons, tinted with the text colour */
+.ico { width: 16px; height: 16px; background: currentColor; flex: none;
+  -webkit-mask: var(--m) center / contain no-repeat; mask: var(--m) center / contain no-repeat; }
+.ico-github { --m: url("assets/logos/github.svg"); }
+.ico-linkedin { --m: url("assets/logos/linkedin.svg"); }
+
+/* ---------- Casper → ODE acquisition ---------- */
+/* both sides match: same tile size, same type; "acquired by" rides on the connector */
+.merger { position: relative; display: inline-flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; }
+.role-head:has(.merger) { padding-top: 40px; }
+.acq-link { position: relative; display: inline-flex; flex-direction: column; align-items: center; gap: 4px; padding: 0 2px; }
+.acq-by { font-size: .64rem; font-weight: 400; letter-spacing: .08em; text-transform: uppercase; color: var(--muted);
+  opacity: 0; transition: opacity .4s .6s; }
+.acq-line { position: relative; width: 72px; height: 3px; }
+.acq-line span {
+  position: absolute; inset: 0; border-radius: 3px;
+  background: linear-gradient(90deg, #a78bfa, var(--ice) 50%, #c9b8a6);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform .6s var(--ease) .15s;
+}
+.acq-line::before, .acq-line::after {
+  content: ""; position: absolute; top: 50%; width: 7px; height: 7px; margin-top: -3.5px;
+  border-radius: 50%; background: var(--ice); opacity: 0; transition: opacity .3s .1s;
+}
+.acq-line::before { left: -3px; }
+.acq-line::after { right: -3px; transition-delay: .7s; }
+.org-ode { opacity: .35; transition: opacity .45s .7s; }
+
+/* the frame's box is measured in JS (main.js) so it always covers both logos */
+.acq-frame { position: absolute; left: 0; top: 0; width: 0; height: 0; pointer-events: none; opacity: 0;
+  transition: left .7s var(--ease) .55s, top .7s var(--ease) .55s, width .7s var(--ease) .55s, height .7s var(--ease) .55s, opacity .3s; }
+.acq-frame.ready { opacity: 1; }
+.acq-frame .c { position: absolute; width: 10px; height: 10px; border: 1.5px solid var(--ice); }
+.acq-frame .tl { left: 0; top: 0; border-right: 0; border-bottom: 0; border-top-left-radius: 3px; }
+.acq-frame .tr { right: 0; top: 0; border-left: 0; border-bottom: 0; border-top-right-radius: 3px; }
+.acq-frame .bl { left: 0; bottom: 0; border-right: 0; border-top: 0; border-bottom-left-radius: 3px; }
+.acq-frame .br { right: 0; bottom: 0; border-left: 0; border-top: 0; border-bottom-right-radius: 3px; }
+.acq-label {
+  position: absolute; left: -1px; bottom: 100%; margin-bottom: 5px;
+  font-size: 10px; font-weight: 500; letter-spacing: .02em; white-space: nowrap;
+  background: var(--ice); color: var(--bg); padding: 2px 6px; border-radius: 4px;
+  opacity: 0; transform: translateY(3px); transition: opacity .25s 1.15s, transform .25s 1.15s;
+}
+.acq-label i { font-style: normal; opacity: .65; }
+
+.merger.linked .acq-line span { transform: scaleX(1); }
+.merger.linked .acq-line::before, .merger.linked .acq-line::after { opacity: 1; }
+.merger.linked .acq-by { opacity: 1; }
+.merger.linked .org-ode { opacity: 1; }
+.merger.linked .acq-label { opacity: 1; transform: none; }
+
+/* stacked: used whenever the two companies don't fit on one line (set in main.js) */
+.merger.stacked { flex-direction: column; align-items: flex-start; gap: 6px; }
+.merger.stacked .acq-link { flex-direction: row; gap: 10px; padding: 0 0 0 18px; }
+.merger.stacked .acq-line { width: 3px; height: 26px; order: -1; }
+.merger.stacked .acq-line span { transform: scaleY(0); transform-origin: top; }
+.merger.stacked.linked .acq-line span { transform: scaleY(1); }
+.merger.stacked .acq-line::before { left: 50%; top: -3px; margin: 0 0 0 -3.5px; }
+.merger.stacked .acq-line::after { left: 50%; right: auto; top: auto; bottom: -3px; margin: 0 0 0 -3.5px; }
+
+@media (max-width: 640px) {
+  .logo { width: 34px; height: 34px; border-radius: 9px; }
+  .logo.xs { width: 24px; height: 24px; }
+  .org { gap: 10px; }
+  .role-head:has(.merger) { padding-top: 18px; }
+  .merger { margin-top: 30px; }
 }
